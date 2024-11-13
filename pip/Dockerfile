@@ -1,4 +1,4 @@
-FROM python:3.8
+FROM python:3.10
 
 # Establece el directorio de trabajo dentro del contenedor
 WORKDIR /pip
@@ -10,7 +10,7 @@ COPY prueba.txt /pip/prueba.txt
 RUN pip install --no-cache-dir --upgrade -r /pip/prueba.txt
 
 # Copia todo el contenido del directorio actual al contenedor
-COPY . /pip/
+COPY . /pip
 
 # Mantén el contenedor corriendo, o ejecuta tu programa principal
-CMD ["bash", "-c", "while true; do sleep 1; done"]
+CMD ["uvicorn", "main:pip", "--host", "0.0.0.0", "--port", "80"]

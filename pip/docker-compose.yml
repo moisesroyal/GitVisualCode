@@ -1,12 +1,5 @@
-version: '3'
 services:
-  pip:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    volumes:
-      - .:/pip
+  web:
+    image: nginx
     ports:
-      - "5000:5000"
-    command: python3 Dockerfile
-
+      - "8080:80"
